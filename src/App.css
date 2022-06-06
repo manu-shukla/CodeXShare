@@ -16,10 +16,18 @@
 .logoArea{
     display: flex;
 }
-.logoArea h1
-{
- margin-left: 18px;
 
+.logoNameArea h1{
+    padding: 0;
+    margin: 0;
+}
+
+.logoNameArea{
+    display: flex;
+    flex-direction: column;justify-content: center;
+    align-items: center;
+    margin-left: 20px ;
+    margin-bottom: 25px;
 }
 
 footer {
@@ -131,12 +139,14 @@ footer a:hover {
 }
 
 .logo {
-    border-bottom: 1px solid #424242;
-    padding-bottom: 10px;
+    border-bottom: 3px solid lightgreen;
+    padding-bottom: 8px;
 }
 
 .logoImage {
     height: 60px;
+    padding-left: 80px;
+    padding-bottom: 5px;
 }
 
 .leaveBtn {
@@ -148,4 +158,11 @@ footer a:hover {
     font-size: 20px;
     line-height: 1.6;
     padding-top: 20px;
+}
+
+.caption{
+    font-weight: bold;
+    font-size: 14px;
+    
+    
 }

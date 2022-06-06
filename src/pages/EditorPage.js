@@ -27,7 +27,7 @@ const EditorPage = () => {
 
       function handleErrors(e) {
         console.log("socket error", e);
-        toast.error("Socket connection failed, try again later.");
+        toast.error("Could Not Connect to the Room.Please try again!");
         reactNavigator("/");
       }
 
@@ -41,7 +41,7 @@ const EditorPage = () => {
         ACTIONS.JOINED,
         ({ clients, username, socketId }) => {
           if (username !== location.state?.username) {
-            toast.success(`${username} joined the room.`);
+            toast.success(`${username} has joined the room.`);
             console.log(`${username} joined`);
           }
           setClients(clients);
@@ -54,7 +54,7 @@ const EditorPage = () => {
 
       // Listening for disconnected
       socketRef.current.on(ACTIONS.DISCONNECTED, ({ socketId, username }) => {
-        toast.success(`${username} left the room.`);
+        toast.success(`${username} has left the room.`);
         setClients((prev) => {
           return prev.filter((client) => client.socketId !== socketId);
         });
@@ -96,9 +96,12 @@ const EditorPage = () => {
               src="/codexshareLogo.png"
               alt="CodeXShare Logo"
             />
-            <h2>CodeXShare</h2>
+            <div className="logoNameArea">
+            <h1>CodeXShare</h1>
+            <span className="caption">Code. Collaborate. Build</span>
           </div>
-          <h3>Connected</h3>
+          </div>
+          <h3>Connected People</h3>
           <div className="clientsList">
             {clients.map((client) => (
               <Client key={client.socketId} username={client.username} />
@@ -106,10 +109,10 @@ const EditorPage = () => {
           </div>
         </div>
         <button className="btn copyBtn" onClick={copyRoomId}>
-          Copy ROOM ID
+          Copy Room ID
         </button>
         <button className="btn leaveBtn" onClick={leaveRoom}>
-          Leave
+          Leave Room
         </button>
       </div>
       <div className="editorWrap">
